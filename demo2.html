@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        /* :target选择器 用于选择当前锚所对应id的元素 */
+      .item1:target {
+        background-color: hotpink;
+      }
+      /* :not()选择器 用于选择不是所选元素以外的所有元素 */
+      :not(a){
+        border-bottom: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#html1">点击</a>
+    <div id="html3" class="item1">hello word!</div>
+    <div id="html2" class="item1">hello word!</div>
+  </body>
+</html>
