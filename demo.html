@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        font-size: 0;
+      }
+      .fullscreen {
+        width: 100%;
+        height: 100%;
+      }
+      .move1 {
+        animation: move1 0.5s ease-out;
+      }
+      .move2 {
+        animation: move2 0.5s ease-out;
+      }
+      .move3 {
+        animation: move3 1s ease-in;
+      }
+      .move4 {
+        animation: move4 1s ease-out;
+      }
+      .move5 {
+        animation: move5 0.7s ease-in-out;
+      }
+      .imglist {
+        list-style: none;
+        position: absolute;
+        bottom: 50px;
+        width: 100%;
+        /* background-color: red; */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: flex-end;
+      }
+      .imgitem {
+        position: relative;
+        width: 300px;
+        font-size: 0;
+      }
+      .wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #777;
+        opacity: 0.5;
+        cursor: pointer;
+      }
+      .imgitem img {
+        width: 100%;
+      }
+      @keyframes move1 {
+        from {
+          transform: translateX(-500px);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+      @keyframes move2 {
+        from {
+          transform: translateY(-350px);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+      @keyframes move3 {
+        from {
+          transform: scale(0.1);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      @keyframes move4 {
+        from {
+          transform: scale(2);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      @keyframes move5 {
+        from {
+          transform: rotate(-360deg) scale(0.1);
+        }
+        to {
+          transform: rotate(0deg) scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img src="./img/img1.jpg" alt="" class="fullscreen move5" />
+    <!-- 缩略图列表 -->
+    <ul class="imglist">
+      <li class="imgitem">
+        <!-- 灰色遮罩 -->
+        <div class="wrap" data-index="1"></div>
+        <img src="./img/img1.jpg" alt="" />
+      </li>
+      <li class="imgitem">
+        <div class="wrap" data-index="2"></div>
+        <img src="./img/img2.jpg" alt="" />
+      </li>
+      <li class="imgitem">
+        <div class="wrap" data-index="3"></div>
+        <img src="./img/img3.jpg" alt="" />
+      </li>
+      <li class="imgitem">
+        <div class="wrap" data-index="4"></div>
+        <img src="./img/img4.jpg" alt="" />
+      </li>
+      <li class="imgitem">
+        <div class="wrap" data-index="5"></div>
+        <img src="./img/img5.jpg" alt="" />
+      </li>
+    </ul>
+    <script>
+      var item = document.querySelectorAll(".wrap");
+      var fullScreeImg = document.querySelector(".fullscreen");
+      item.forEach(item => {
+        item.addEventListener("mouseover", function() {
+          this.style.opacity = 0;
+        });
+        item.addEventListener("mouseout", function() {
+          this.style.opacity = 0.5;
+        });
+        item.addEventListener("click", function() {
+          fullScreeImg.src = this.nextElementSibling.src;
+          fullScreeImg.classList = [];
+          fullScreeImg.className =
+            "fullscreen move" + this.getAttribute("data-index");
+        });
+      });
+    </script>
+  </body>
+</html>
